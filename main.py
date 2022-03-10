@@ -1,6 +1,7 @@
 from concurrent.futures.process import _threads_wakeups
 from tkinter import *
 import random
+from tkinter.font import BOLD
 
 GAME_WIDTH = 700
 GAME_HEIGHT = 700
@@ -121,7 +122,14 @@ def check_collisions(snake):
 
 
 def game_over():
-    pass
+    
+    canvas.delete(ALL)
+    canvas.create_text( canvas.winfo_width()/2, 
+                        canvas.winfo_height()/2, 
+                        text="GAME OVER!", 
+                        font=("consolas", 70, BOLD), 
+                        fill="red", 
+                        tag="gameover")
 
 
 window = Tk()
