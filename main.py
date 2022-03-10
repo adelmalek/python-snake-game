@@ -13,8 +13,18 @@ BACKGROUND_COLOR = "#0000FF"
 class Snake:
     pass
 
+
 class Food:
-    pass
+
+    def __init__(self):
+    
+        x = random.randint(0, (GAME_WIDTH/SPACE_SIZE)-1) * SPACE_SIZE
+        y = random.randint(0, (GAME_HEIGHT/SPACE_SIZE)-1) * SPACE_SIZE
+
+        self.coordinates = [x, y]
+
+        canvas.create_oval(x, y, x + SPACE_SIZE, y + SPACE_SIZE, fill=FOOD_COLOR, tag="food")
+
 
 def next_turn():
     pass
@@ -28,18 +38,23 @@ def check_collisions():
 def game_over():
     pass
 
+
 window = Tk()
 window.title("Snake Game")
 window.resizable(False, False)
 
+
 score = 0
 direction = "down"
+
 
 label = Label(text="Score: {}".format(score), font=("consolas", 20))
 label.pack()
 
+
 canvas = Canvas(window, width=GAME_WIDTH, height=GAME_HEIGHT, bg=BACKGROUND_COLOR)
 canvas.pack()
+
 
 window.update()
 
@@ -52,5 +67,10 @@ x = int((screen_width/2) - (window_width/2))
 y = int((screen_height/2) - (window_height/2))
 
 window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+
+snake = Snake()
+food = Food()
+
 
 window.mainloop()
